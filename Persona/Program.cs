@@ -8,37 +8,45 @@ namespace Persona
 {
     class Program
     {
-        //DEFINIR ARREGLO DE PERSONAS
+        Persona[] Personas;
         public Program()
         {
-            //INICIALIZAR
+            Personas = new Persona[5];
             Principal();
+            ImprimeArreglo();
         }
 
         public void Principal()
         {
             int Edad;
             string Nombre;
+            Persona P;
 
-            Console.WriteLine("ESCRIBE TU NOMBRE");
-            Nombre = Console.ReadLine();
-            Console.WriteLine("ESCRIBE TU EDAD");
-            Edad = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < Personas.Length; i++)
+            {
+                Console.WriteLine("ESCRIBE TU NOMBRE");
+                Nombre = Console.ReadLine();
 
-            Persona A = new Persona(Edad,Nombre);
+                Console.WriteLine("ESCRIBE TU EDAD");
+                Edad = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("SU NOMBRE ES: "+A.pNombre);
-            Console.WriteLine("SU EDAD ES: "+A.pEdad);
+                P = new Persona(Edad, Nombre);
 
-            Console.ReadKey();
+                Personas[i] = P;
+            }
 
-            Console.WriteLine("CUÁL ES SU NUEVO NOMBRE");
-            Nombre = Console.ReadLine();
+        }
 
-            A.pNombre = Nombre;
-
-            Console.WriteLine("SU NUEVO NOMBRE ES: "+A.pNombre);
-
+        public void ImprimeArreglo()
+        {
+            Persona P;
+            Console.WriteLine();
+            Console.WriteLine("----PERSONAS EN EL ARREGLO----");
+            for (int i = 0; i < Personas.Length; i++)
+            {
+                P = Personas[i];
+                Console.WriteLine("NOMBRE: {0} EDAD: {1}",P.pNombre,P.pEdad);
+            }
             Console.ReadKey();
         }
 
