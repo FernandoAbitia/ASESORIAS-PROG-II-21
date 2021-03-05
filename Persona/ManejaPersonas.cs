@@ -33,6 +33,29 @@ namespace Persona
             return null;
         }
 
+        public bool ModificaNombre(Persona P, string NvoNombre)
+        {
+            //CAMBIAR LÓGICA DEL MÉTODO Y PARÁMETROS
+            for (int i = 0; i < Contador; i++)
+            {
+                if (Personas[i].pNombre == P.pNombre)
+                {
+                    Personas[i].pNombre = NvoNombre;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public int BuscaPosicion(string Nombre)
+        {
+            int pos = -1;
+
+            //BUSCAR LA POSICIÓN DE ESA PERSONA EN EL ARREGLO A TRAVÉS DEL NOMBRE
+
+            return pos;
+        }
+
         public String ImprimirArreglo()
         {
             string Mensaje = "";
@@ -61,8 +84,6 @@ namespace Persona
             }
         }
 
-
-
         public void OrdenarArregloNombre()
         {
             Persona aux;
@@ -90,27 +111,6 @@ namespace Persona
                     return true;
             }
             return false;
-        }
-        public bool ModificaNombre(Persona P, string NvoNombre)
-        {
-            for (int i = 0; i < Contador; i++)
-            {
-                if (Personas[i].pNombre == P.pNombre)
-                {
-                    Personas[i].pNombre = NvoNombre;
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public int BuscaPosicion(string Nombre)
-        {
-            int pos = -1;
-
-            //RETORNAR LA POSICIÓN DE ESA PERSONA A TRAVÉS DEL NOMBRE
-
-            return pos;
         }
 
         public int pContador

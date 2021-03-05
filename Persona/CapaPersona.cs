@@ -175,6 +175,8 @@ namespace Persona
             Console.WriteLine("PROPORCIONA EL NOMBRE DE LA PERSONA A CAMBIAR");
             Nombre = Console.ReadLine();
 
+            //A PARTIR DE AQUÍ MODIFICAR, AHORA SE DEBE OBTENER LA POS
+            //DE ESA PERSONA EN EL ARREGLO, A TRAVÉS DEL NOMBRE
             P = MP.Consulta(Nombre);
 
             if (P == null)
@@ -187,14 +189,6 @@ namespace Persona
             Nombre = Console.ReadLine();
 
             MP.ModificaNombre(P, Nombre);
-        }
-
-        public void ModificaPorPos()
-        {
-            //PEDIR NOMBRE DE LA PERSONA
-            //ENCONTRAR LA POS DE ESA PERSONA EN EL ARREGLO
-            //PEDIR EL NUEVO NOMBRE
-            //CAMBIAR EL NOMBRE
         }
         public string CamibaMayusculas(string Cadena)
         {
