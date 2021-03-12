@@ -33,27 +33,20 @@ namespace Persona
             return null;
         }
 
-        public bool ModificaNombre(Persona P, string NvoNombre)
+        public bool ModificaNombre(int pos, string nvoNombre)
         {
-            //CAMBIAR LÓGICA DEL MÉTODO Y PARÁMETROS
-            for (int i = 0; i < Contador; i++)
-            {
-                if (Personas[i].pNombre == P.pNombre)
-                {
-                    Personas[i].pNombre = NvoNombre;
-                    return true;
-                }
-            }
-            return false;
+            Personas[pos].pNombre = nvoNombre;
+            return true;
         }
 
         public int BuscaPosicion(string Nombre)
         {
-            int pos = -1;
-
-            //BUSCAR LA POSICIÓN DE ESA PERSONA EN EL ARREGLO A TRAVÉS DEL NOMBRE
-
-            return pos;
+            for (int i=0; i<Contador; i++)
+            {
+                if (Personas[i].pNombre == Nombre)
+                    return i;
+            }
+            return -1;
         }
 
         public String ImprimirArreglo()

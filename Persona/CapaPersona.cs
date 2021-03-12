@@ -169,26 +169,25 @@ namespace Persona
 
         public void Modifica()
         {
+            int pos;
             Persona P;
             string Nombre ="";
 
             Console.WriteLine("PROPORCIONA EL NOMBRE DE LA PERSONA A CAMBIAR");
             Nombre = Console.ReadLine();
 
-            //A PARTIR DE AQUÍ MODIFICAR, AHORA SE DEBE OBTENER LA POS
-            //DE ESA PERSONA EN EL ARREGLO, A TRAVÉS DEL NOMBRE
-            P = MP.Consulta(Nombre);
+            pos = MP.BuscaPosicion(Nombre);
 
-            if (P == null)
+            if (pos == -1)
             {
-                Console.WriteLine("LA PERSONA NO EXISTE EN EL ARREGLO");
+                Console.WriteLine("LA PERSONA NO ESTÁ REGISTRADA EN EL ARREGLO");
                 return;
             }
-
             Console.WriteLine("PROPORCIONE EL NUEVO NOMBRE");
             Nombre = Console.ReadLine();
 
-            MP.ModificaNombre(P, Nombre);
+            MP.ModificaNombre(pos,Nombre);
+            Console.WriteLine("CAMBIO DE NOMBRE CORRECTO");
         }
         public string CamibaMayusculas(string Cadena)
         {
