@@ -61,11 +61,6 @@ namespace Persona
 
         public void Agregar()
         {
-            if (MP.pContador == MP.pTamañoArreglo)
-            {
-                Console.WriteLine("ARREGLO LLENO!!");
-                return;
-            }
 
             string Nombre;
             int Edad;
@@ -169,25 +164,7 @@ namespace Persona
 
         public void Modifica()
         {
-            int pos;
-            Persona P;
-            string Nombre ="";
 
-            Console.WriteLine("PROPORCIONA EL NOMBRE DE LA PERSONA A CAMBIAR");
-            Nombre = Console.ReadLine();
-
-            pos = MP.BuscaPosicion(Nombre);
-
-            if (pos == -1)
-            {
-                Console.WriteLine("LA PERSONA NO ESTÁ REGISTRADA EN EL ARREGLO");
-                return;
-            }
-            Console.WriteLine("PROPORCIONE EL NUEVO NOMBRE");
-            Nombre = Console.ReadLine();
-
-            MP.ModificaNombre(pos,Nombre);
-            Console.WriteLine("CAMBIO DE NOMBRE CORRECTO");
         }
         public string CamibaMayusculas(string Cadena)
         {

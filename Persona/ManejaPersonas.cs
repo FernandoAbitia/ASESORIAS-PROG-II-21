@@ -8,99 +8,71 @@ namespace Persona
 {
     class ManejaPersonas
     {
-        private Persona[] Personas;
-        private int Contador;
+        private Dictionary<int, Persona> Persona;
+        private int Clave;
 
         public ManejaPersonas()
         {
-            Personas = new Persona[5];
-            Contador = 0;
+            Persona = new Dictionary<int, Persona>();
+            Clave = 1;
         }
 
         public void Agregar(Persona P)
         {
-            Personas[Contador] = P;
-            Contador++;
+            Persona.Add(Clave,P);
+            Clave++;
         }
 
         public Persona Consulta(string Nombre)
         {
-            for (int i = 0; i < Contador; i++)
+            foreach (KeyValuePair<int,Persona> item in Persona)
             {
-                if (Personas[i].pNombre == Nombre)
-                    return Personas[i];
+                if (item.Value.pNombre == Nombre)
+                    return item.Value;
             }
             return null;
         }
 
-        public bool ModificaNombre(int pos, string nvoNombre)
+        public bool ModificaNombre(int Clave, string nvoNombre)
         {
-            Personas[pos].pNombre = nvoNombre;
-            return true;
-        }
-
-        public int BuscaPosicion(string Nombre)
-        {
-            for (int i=0; i<Contador; i++)
+            foreach (KeyValuePair<int, Persona> item in Persona)
             {
-                if (Personas[i].pNombre == Nombre)
-                    return i;
+                if (item.Key == Clave)
+                {
+                    item.Value.pNombre = nvoNombre;
+                    return true;
+                }
             }
-            return -1;
+            return false;
         }
 
         public String ImprimirArreglo()
         {
             string Mensaje = "";
 
-            for (int i = 0; i < Contador; i++)
-                Mensaje += "\nNOMBRE: " + Personas[i].pNombre + " EDAD: " + Personas[i].pEdad;
-
+            foreach (KeyValuePair<int,Persona> item in Persona)
+            {
+                Mensaje += "NOMBRE: " + item.Value.pNombre + " EDAD: " + item.Value.pEdad;
+            }
             return Mensaje;
         }
 
         public void OrdenarArregloEdad()
         {
-            Persona aux;
 
-            for (int i = 0; i < Contador-1; i++)
-            {
-                for (int j=i+1; j < Contador; j++)
-                {
-                    if (Personas[i].pEdad > Personas[j].pEdad)
-                    {
-                        aux = Personas[i];
-                        Personas[i] = Personas[j];
-                        Personas[j] = aux;
-                    }
-                }
-            }
         }
 
         public void OrdenarArregloNombre()
         {
-            Persona aux;
 
-            for (int i = 0; i < Contador - 1; i++)
-            {
-                for (int j = i + 1; j < Contador; j++)
-                {
-                    if (Personas[i].pNombre.CompareTo(Personas[j].pNombre) == 1)
-                    {
-                        aux = Personas[i];
-                        Personas[i] = Personas[j];
-                        Personas[j] = aux;
-                    }
-                }
-            }
 
         }
 
         public bool PersonaExistente(string Nombre, int Edad)
         {
-            for (int i=0;i<Contador; i++)
+            foreach (KeyValuePair<int, Persona> item in Persona)
             {
-                if (Personas[i].pNombre == Nombre && Personas[i].pEdad == Edad)
+                if (item.Value.pNombre == Nombre && item.Value.pEdad == Edad)
                     return true;
             }
             return false;
@@ -110,15 +82,7 @@ namespace Persona
         {
             get
             {
-                return Contador;
-            }
-        }
-
-        public int pTamañoArreglo
-        {
-            get
-            {
-                return Personas.Length;
+                return Persona.Count;
             }
         }
     }
