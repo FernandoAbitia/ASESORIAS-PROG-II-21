@@ -23,7 +23,7 @@ namespace Persona
             {
                 Console.WriteLine("--------MENÚ--------");
                 Console.WriteLine("SELECCIONA UNA OPCIÓN");
-                Console.WriteLine(" 1.- AGREGAR \n 2.- CONSULTAR \n 3.- ORDENAR \n 4.- IMPRIMIR ARREGLO \n 5.- MODIFICAR NOMBRE \n 0.- SALIR");
+                Console.WriteLine(" 1.- AGREGAR \n 2.- CONSULTAR \n 3.- IMPRIMIR ARREGLO \n 4.- MODIFICAR NOMBRE\n 0.- SALIR");
                 op = Convert.ToInt32(Console.ReadLine());
 
                 switch (op)
@@ -37,15 +37,11 @@ namespace Persona
                         break;
 
                     case 3:
-                        Ordena();
-                        break;
-
-                    case 4:
                         Imprimir();
                         break;
 
-                    case 5:
-                        Modifica();
+                    case 4:
+                        ModificaPorClave();
                         break;
 
                     case 0:
@@ -80,7 +76,7 @@ namespace Persona
 
             } while (Edad < 0);
 
-            if (MP.PersonaExistente(Nombre, Edad))
+            if (MP.PersonaExistente(Nombre.ToUpper(), Edad))
             {
                 Console.WriteLine("LA PERSONA YA SE ENCUENTRA EN EL ARREGLO");
                 return;
@@ -108,7 +104,7 @@ namespace Persona
 
             } while (Nombre.Length == 0);
 
-            P = MP.Consulta(Nombre.ToUpper());
+            P = MP.ConsultaPorNombre(Nombre.ToUpper());
 
 
             if (P == null)
@@ -118,7 +114,7 @@ namespace Persona
             }
 
             Console.WriteLine("--DATOS DE LA PERSONA");
-            Console.WriteLine("NOMBRE {0} EDAD {1}",P.pNombre,P.pEdad);
+            Console.WriteLine(P.ToString());
         }
 
         public void Imprimir()
@@ -126,46 +122,26 @@ namespace Persona
             Console.WriteLine("DATOS DE LAS PERSONAS:");
             Console.WriteLine(MP.ImprimirArreglo());
         }
-
-        public void Ordena()
+        public void ModificaPorClave()
         {
-            int op = -1;
+            string nvoNombre;
+            int Clave;
 
-            do
+            Console.WriteLine("PROPORCIONA LA CLAVE DE LA PERSONA");
+            Clave = Convert.ToInt32(Console.ReadLine());
+
+            if (!MP.ClaveExistente(Clave))
             {
-                Console.WriteLine("---SUBMENÚ DE ORDEN---");
-                Console.WriteLine("PROPORCIONA UNA OPCIÓN");
-                Console.WriteLine(" 1.- ORDENAR POR EDAD \n 2.- ORDENAR POR NOMBR \n 0.- SALIR");
-                op = Convert.ToInt32(Console.ReadLine());
-
-                switch (op) 
-                {
-                    case 1:
-                        MP.OrdenarArregloEdad();
-                        Console.WriteLine("ARREGLO ORDENADO CORRECTAMENTE");
-                        break;
-
-                    case 2:
-                        MP.OrdenarArregloNombre();
-                        Console.WriteLine("ARREGLO ORDENADO CORRECTAMENTE");
-                        break;
-
-                    case 0:
-                        return;
-
-                    default:
-                        Console.WriteLine("PROPORCIONA UNA OPCIÓN VÁLIDA");
-                        break;
-                }
-
-            } while (op != 0);
-
+                Console.WriteLine("La clave no existe");
+                return;
+            }
+            Console.WriteLine("PERSONA ENCONTRADA: "+MP.ConsultaPorClave(Clave).pNombre);
+            Console.WriteLine("PROPORCIONA EL NUEVO NOMBRE");
+            nvoNombre = Console.ReadLine();
+            MP.ModificaNomPorClave(Clave,nvoNombre);
+            Console.WriteLine("NOMBRE MODIFICADO CORRECTAMENTE");
         }
 
-        public void Modifica()
-        {
-
-        }
         public string CamibaMayusculas(string Cadena)
         {
             return Cadena.ToUpper();

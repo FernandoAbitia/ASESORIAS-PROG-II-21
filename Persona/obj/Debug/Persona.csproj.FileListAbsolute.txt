@@ -10,3 +10,10 @@ C:\GitKrakenProy\ASESORIAS PROG II 21\Persona\obj\Debug\Persona.pdb
 C:\GitKrakenProy\ASESORIAS PROG II 21\Persona\bin\Debug\Persona.exe.config
 C:\GitKrakenProy\ASESORIAS PROG II 21\Persona\bin\Debug\Persona.exe
 C:\GitKrakenProy\ASESORIAS PROG II 21\Persona\bin\Debug\Persona.pdb
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Persona\bin\Debug\Persona.exe.config
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Persona\bin\Debug\Persona.exe
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Persona\bin\Debug\Persona.pdb
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Persona\obj\Debug\Persona.csprojAssemblyReference.cache
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Persona\obj\Debug\Persona.csproj.CoreCompileInputs.cache
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Persona\obj\Debug\Persona.exe
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Persona\obj\Debug\Persona.pdb

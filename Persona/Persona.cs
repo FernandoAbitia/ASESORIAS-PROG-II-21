@@ -43,5 +43,9 @@ namespace Persona
                 Nombre = value;
             }
         }
+        override public string ToString()
+        {
+            return "\n"+"Nombre: " + this.Nombre+"\n" + "Edad: " + this.Edad+"\n";
+        }
     }
 }

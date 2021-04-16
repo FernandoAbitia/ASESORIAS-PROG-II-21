@@ -23,7 +23,37 @@ namespace Persona
             Clave++;
         }
 
-        public Persona Consulta(string Nombre)
+        public bool PersonaExistente(string Nombre, int Edad)
+        {
+            foreach (KeyValuePair<int, Persona> item in Persona)
+            {
+                if (item.Value.pNombre == Nombre && item.Value.pEdad == Edad)
+                    return true;
+            }
+            return false;
+        }
+        public bool ClaveExistente(int Clave)
+        {
+            if (Persona.ContainsKey(Clave))
+                return true;
+
+            return false;
+
+        }
+
+        public void ModificaNomPorClave(int Clave, string nvoNombre)
+        {
+            Persona[Clave].pNombre = nvoNombre;
+        }
+        public Persona ConsultaPorClave(int Clave)
+        {
+            if (ClaveExistente(Clave))
+                return Persona[Clave];
+
+            return null;
+        }
+
+        public Persona ConsultaPorNombre(string Nombre)
         {
             foreach (KeyValuePair<int,Persona> item in Persona)
             {
@@ -33,49 +63,15 @@ namespace Persona
             return null;
         }
 
-        public bool ModificaNombre(int Clave, string nvoNombre)
-        {
-            foreach (KeyValuePair<int, Persona> item in Persona)
-            {
-                if (item.Key == Clave)
-                {
-                    item.Value.pNombre = nvoNombre;
-                    return true;
-                }
-            }
-            return false;
-        }
-
         public String ImprimirArreglo()
         {
             string Mensaje = "";
 
             foreach (KeyValuePair<int,Persona> item in Persona)
             {
-                Mensaje += "NOMBRE: " + item.Value.pNombre + " EDAD: " + item.Value.pEdad;
+                Mensaje += "\n"+ "Clave: " +item.Key+ " "+item.Value.ToString();
             }
             return Mensaje;
-        }
-
-        public void OrdenarArregloEdad()
-        {
-
-        }
-
-        public void OrdenarArregloNombre()
-        {
-
-
-        }
-
-        public bool PersonaExistente(string Nombre, int Edad)
-        {
-            foreach (KeyValuePair<int, Persona> item in Persona)
-            {
-                if (item.Value.pNombre == Nombre && item.Value.pEdad == Edad)
-                    return true;
-            }
-            return false;
         }
 
         public int pContador
