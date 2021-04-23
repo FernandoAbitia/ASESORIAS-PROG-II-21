@@ -1,0 +1,12 @@
+C:\Users\ferna\source\repos\Biblioteca\Biblioteca\bin\Debug\Biblioteca.exe.config
+C:\Users\ferna\source\repos\Biblioteca\Biblioteca\bin\Debug\Biblioteca.exe
+C:\Users\ferna\source\repos\Biblioteca\Biblioteca\bin\Debug\Biblioteca.pdb
+C:\Users\ferna\source\repos\Biblioteca\Biblioteca\obj\Debug\Biblioteca.csprojAssemblyReference.cache
+C:\Users\ferna\source\repos\Biblioteca\Biblioteca\obj\Debug\Biblioteca.Properties.Resources.resources
+C:\Users\ferna\source\repos\Biblioteca\Biblioteca\obj\Debug\Biblioteca.csproj.GenerateResource.cache
+C:\Users\ferna\source\repos\Biblioteca\Biblioteca\obj\Debug\Biblioteca.csproj.CoreCompileInputs.cache
+C:\Users\ferna\source\repos\Biblioteca\Biblioteca\obj\Debug\Biblioteca.exe
+C:\Users\ferna\source\repos\Biblioteca\Biblioteca\obj\Debug\Biblioteca.pdb
+C:\Users\ferna\source\repos\Biblioteca\Biblioteca\obj\Debug\Biblioteca.frmPrincipal.resources
+C:\Users\ferna\source\repos\Biblioteca\Biblioteca\obj\Debug\Biblioteca.frmRegistraLibro.resources
+C:\Users\ferna\source\repos\Biblioteca\Biblioteca\obj\Debug\Biblioteca.frmRegistraPrestamo.resources
