@@ -27,6 +27,13 @@ namespace Biblioteca
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
 
+            DialogResult D = MessageBox.Show("¿Desea Guardar?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (D == DialogResult.No)
+                return;
+
+            if (!Valida())
+                return;
+
             string ISBN, Autor, NombreLibro, Editorial;
             byte Existencia;
             bool Sala;
@@ -44,6 +51,38 @@ namespace Biblioteca
 
             Libro L = new Libro(Autor,NombreLibro,Editorial,Existencia,Sala);
             Libros.Agregar(ISBN,L);
+        }
+
+        public bool Valida()
+        {
+            if (txtAutor.Text.Length == 0)
+            {
+                MessageBox.Show("INTRODUCE UN AUTOR","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
+            }
+            if (txtISBN.Text.Length == 0)
+            {
+                MessageBox.Show("INTRODUCE UN ISBN", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (txtNombreLibro.Text.Length == 0)
+            {
+                MessageBox.Show("INTRODUCE UN NOMBRE DE LIBRO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (nupExistencia.Value <= 0)
+            {
+                MessageBox.Show("SELECCIONA UNA EXISTENCIA MAYOR A 0", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (cmbEditorial.SelectedIndex < 0)
+            {
+                MessageBox.Show("SELECCIONA UNA EDITORIAL", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
     }
 }

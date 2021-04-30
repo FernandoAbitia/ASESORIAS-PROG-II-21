@@ -55,5 +55,34 @@ namespace Biblioteca
             return L;
         }
 
+        public KeyValuePair<string, Libro>[] ObtenLibros()
+        {
+            int c = 0;
+            KeyValuePair<string, Libro>[] Arreglo = new KeyValuePair<string, Libro>[Libros.Count];
+
+            foreach (KeyValuePair<string,Libro> item in Libros)
+            {
+                Arreglo[c] = item;
+                c++;
+            }
+
+            return Arreglo;
+        }
+
+        public bool VerificaExistencia(string ISBN)
+        {
+            Libro L = Libros[ISBN];
+
+            if (L.pExistencia == 0)
+                return false;
+
+            return true;
+        }
+
+        public void RestaExistencia(string ISBN) 
+        {
+            Libros[ISBN].pExistencia -= 1;
+        }
+
     }
 }

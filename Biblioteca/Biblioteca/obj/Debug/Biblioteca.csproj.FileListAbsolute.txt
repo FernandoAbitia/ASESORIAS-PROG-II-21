@@ -10,3 +10,17 @@ C:\Users\ferna\source\repos\Biblioteca\Biblioteca\obj\Debug\Biblioteca.pdb
 C:\Users\ferna\source\repos\Biblioteca\Biblioteca\obj\Debug\Biblioteca.frmPrincipal.resources
 C:\Users\ferna\source\repos\Biblioteca\Biblioteca\obj\Debug\Biblioteca.frmRegistraLibro.resources
 C:\Users\ferna\source\repos\Biblioteca\Biblioteca\obj\Debug\Biblioteca.frmRegistraPrestamo.resources
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\bin\Debug\Biblioteca.exe.config
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\bin\Debug\Biblioteca.exe
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\bin\Debug\Biblioteca.pdb
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\obj\Debug\Biblioteca.csprojAssemblyReference.cache
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\obj\Debug\Biblioteca.frmConsultaLibros.resources
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\obj\Debug\Biblioteca.frmPrincipal.resources
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\obj\Debug\Biblioteca.frmRegistraLibro.resources
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\obj\Debug\Biblioteca.frmRegistraPrestamo.resources
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\obj\Debug\Biblioteca.Properties.Resources.resources
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\obj\Debug\Biblioteca.csproj.GenerateResource.cache
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\obj\Debug\Biblioteca.csproj.CoreCompileInputs.cache
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\obj\Debug\Biblioteca.exe
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\obj\Debug\Biblioteca.pdb
+E:\GitKrakenProy\ASESORIAS-PROG-II-21\Biblioteca\Biblioteca\obj\Debug\Biblioteca.frmConsultaPrestamos.resources

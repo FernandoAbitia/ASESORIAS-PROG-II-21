@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmConsultaLibros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaLibros.Designer.cs">
+      <DependentUpon>frmConsultaLibros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaPrestamos.Designer.cs">
+      <DependentUpon>frmConsultaPrestamos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRegistraLibro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +82,12 @@
     <Compile Include="Prestamo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmConsultaLibros.resx">
+      <DependentUpon>frmConsultaLibros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaPrestamos.resx">
+      <DependentUpon>frmConsultaPrestamos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>

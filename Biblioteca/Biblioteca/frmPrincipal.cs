@@ -35,7 +35,19 @@ namespace Biblioteca
 
         private void prestamosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRegistraPrestamo P = new frmRegistraPrestamo(Libros);
+            frmRegistraPrestamo P = new frmRegistraPrestamo(Libros,Prestamos);
+            P.ShowDialog();
+        }
+
+        private void librosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmConsultaLibros L = new frmConsultaLibros(Libros);
+            L.ShowDialog();
+        }
+
+        private void prestamosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmConsultaPrestamos P = new frmConsultaPrestamos(Prestamos);
             P.ShowDialog();
         }
     }

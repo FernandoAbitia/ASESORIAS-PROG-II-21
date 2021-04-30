@@ -36,6 +36,13 @@ namespace Biblioteca
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdbExterno = new System.Windows.Forms.RadioButton();
+            this.rdbAlumno = new System.Windows.Forms.RadioButton();
+            this.rdbMaestro = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -62,6 +69,7 @@ namespace Biblioteca
             // 
             this.txtNombreLibro.Location = new System.Drawing.Point(157, 132);
             this.txtNombreLibro.Name = "txtNombreLibro";
+            this.txtNombreLibro.ReadOnly = true;
             this.txtNombreLibro.Size = new System.Drawing.Size(190, 20);
             this.txtNombreLibro.TabIndex = 2;
             // 
@@ -77,16 +85,17 @@ namespace Biblioteca
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(31, 271);
+            this.btnRegistrar.Location = new System.Drawing.Point(31, 332);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(75, 23);
             this.btnRegistrar.TabIndex = 4;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(148, 271);
+            this.btnLimpiar.Location = new System.Drawing.Point(148, 332);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpiar.TabIndex = 5;
@@ -95,18 +104,82 @@ namespace Biblioteca
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(272, 271);
+            this.btnSalir.Location = new System.Drawing.Point(272, 332);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 6;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Location = new System.Drawing.Point(44, 201);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(55, 16);
+            this.lblUsuario.TabIndex = 7;
+            this.lblUsuario.Text = "Usuario";
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Location = new System.Drawing.Point(157, 198);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(190, 20);
+            this.txtUsuario.TabIndex = 8;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rdbExterno);
+            this.groupBox1.Controls.Add(this.rdbAlumno);
+            this.groupBox1.Controls.Add(this.rdbMaestro);
+            this.groupBox1.Location = new System.Drawing.Point(31, 255);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(316, 57);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tipo usuario";
+            // 
+            // rdbExterno
+            // 
+            this.rdbExterno.AutoSize = true;
+            this.rdbExterno.Location = new System.Drawing.Point(207, 20);
+            this.rdbExterno.Name = "rdbExterno";
+            this.rdbExterno.Size = new System.Drawing.Size(61, 17);
+            this.rdbExterno.TabIndex = 2;
+            this.rdbExterno.Text = "Externo";
+            this.rdbExterno.UseVisualStyleBackColor = true;
+            // 
+            // rdbAlumno
+            // 
+            this.rdbAlumno.AutoSize = true;
+            this.rdbAlumno.Location = new System.Drawing.Point(116, 20);
+            this.rdbAlumno.Name = "rdbAlumno";
+            this.rdbAlumno.Size = new System.Drawing.Size(60, 17);
+            this.rdbAlumno.TabIndex = 1;
+            this.rdbAlumno.Text = "Alumno";
+            this.rdbAlumno.UseVisualStyleBackColor = true;
+            // 
+            // rdbMaestro
+            // 
+            this.rdbMaestro.AutoSize = true;
+            this.rdbMaestro.Checked = true;
+            this.rdbMaestro.Location = new System.Drawing.Point(25, 19);
+            this.rdbMaestro.Name = "rdbMaestro";
+            this.rdbMaestro.Size = new System.Drawing.Size(63, 17);
+            this.rdbMaestro.TabIndex = 0;
+            this.rdbMaestro.TabStop = true;
+            this.rdbMaestro.Text = "Maestro";
+            this.rdbMaestro.UseVisualStyleBackColor = true;
+            // 
             // frmRegistraPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 322);
+            this.ClientSize = new System.Drawing.Size(379, 384);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.txtUsuario);
+            this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnRegistrar);
@@ -117,6 +190,8 @@ namespace Biblioteca
             this.Name = "frmRegistraPrestamo";
             this.Text = "Registrar un préstamo";
             this.Load += new System.EventHandler(this.frmRegistraPrestamo_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,5 +206,11 @@ namespace Biblioteca
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rdbExterno;
+        private System.Windows.Forms.RadioButton rdbAlumno;
+        private System.Windows.Forms.RadioButton rdbMaestro;
     }
 }
