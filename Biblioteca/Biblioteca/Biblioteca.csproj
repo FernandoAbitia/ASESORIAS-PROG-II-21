@@ -77,8 +77,6 @@
       <DependentUpon>frmRegistraPrestamo.cs</DependentUpon>
     </Compile>
     <Compile Include="Libro.cs" />
-    <Compile Include="ManejaLibros.cs" />
-    <Compile Include="ManejaPrestamos.cs" />
     <Compile Include="Prestamo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

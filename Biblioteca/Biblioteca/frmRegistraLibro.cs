@@ -7,26 +7,69 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Biblioteca
 {
     public partial class frmRegistraLibro : Form
     {
-        private ManejaLibros Libros;
-        public frmRegistraLibro(ManejaLibros Libros)
+        public frmRegistraLibro()
         {
             InitializeComponent();
-            this.Libros = Libros;
         }
 
         private void frmRegistraLibro_Load(object sender, EventArgs e)
         {
+            string Conexion = "Data Source=DESKTOP-94SDT5C\\SQLEXPRESS;Initial Catalog=BIBLIOTECA;Integrated Security=True";
+            SqlConnection Conecta = new SqlConnection(Conexion);
+            try
+            {
+                Conecta.Open();
+            }catch(SqlException Ex)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+                foreach (SqlError Error in Ex.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return;
+            }
 
+            MessageBox.Show("CONECTADO A LA BASE DE DATOS");
+
+            SqlDataReader Lector = null;
+
+            String Query = "SELECT NOMBRE FROM EDITORIAL";
+
+            SqlCommand cmd = new SqlCommand(Query,Conecta);
+            try
+            {
+
+                Lector = cmd.ExecuteReader();
+
+            }catch(SqlException Ex)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+                foreach (SqlError Error in Ex.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return;
+            }
+
+            if (Lector.HasRows)
+            {
+                cmbEditorial.Items.Clear();
+                while (Lector.Read())
+                {
+                    string Editorial = Lector.GetValue(0).ToString();
+                    cmbEditorial.Items.Add(Editorial);
+                }
+                Conecta.Close();
+            }
+            Conecta.Close();
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-
             DialogResult D = MessageBox.Show("¿Desea Guardar?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (D == DialogResult.No)
                 return;
@@ -34,23 +77,106 @@ namespace Biblioteca
             if (!Valida())
                 return;
 
-            string ISBN, Autor, NombreLibro, Editorial;
+            string Conexion = "Data Source=DESKTOP-94SDT5C\\SQLEXPRESS;Initial Catalog=BIBLIOTECA;Integrated Security=True";
+            SqlConnection Conecta = new SqlConnection(Conexion);
+            try
+            {
+                Conecta.Open();
+            }
+            catch (SqlException Ex)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+                foreach (SqlError Error in Ex.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return;
+            }
+            string ISBN, Autor, NombreLibro;
+            int Editorial;
             byte Existencia;
-            bool Sala;
+            int Sala;
 
             ISBN = txtISBN.Text;
             Autor = txtAutor.Text;
             NombreLibro = txtNombreLibro.Text;
-            Editorial = cmbEditorial.SelectedItem.ToString();
+            Editorial = ObtenIDEditorial(cmbEditorial.SelectedItem.ToString());
             Existencia = Convert.ToByte(nupExistencia.Value);
 
             if (chkSala.Checked)
-                Sala = true;
+                Sala = 1;
             else
-                Sala = false;
+                Sala = 0;
 
-            Libro L = new Libro(Autor,NombreLibro,Editorial,Existencia,Sala);
-            Libros.Agregar(ISBN,L);
+            String Query = "INSERT INTO LIBRO(ISBN,AUTOR,NOMBRE,EXISTENCIA,CONSULTA,EDITORIAL)";
+            Query += " VALUES(@ISBN,@AUTOR,@NOMBRE,@EXISTENCIA,@CONSULTA,@EDITORIAL)";
+
+            SqlCommand cmd = new SqlCommand(Query,Conecta);
+            cmd.Parameters.AddWithValue("@ISBN",ISBN);
+            cmd.Parameters.AddWithValue("@AUTOR", Autor);
+            cmd.Parameters.AddWithValue("@NOMBRE", NombreLibro);
+            cmd.Parameters.AddWithValue("@EXISTENCIA", Existencia);
+            cmd.Parameters.AddWithValue("@CONSULTA", Sala);
+            cmd.Parameters.AddWithValue("@EDITORIAL", Editorial);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }catch(SqlException Ex)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+                foreach (SqlError Error in Ex.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return;
+            }
+            MessageBox.Show("LIBRO AGREGADO CORRECTAMENTE","CORRECTO",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
+
+        public int ObtenIDEditorial(string Nombre)
+        {
+            int ID = -1;
+            string Conexion = "Data Source=DESKTOP-94SDT5C\\SQLEXPRESS;Initial Catalog=BIBLIOTECA;Integrated Security=True";
+            SqlConnection Conecta = new SqlConnection(Conexion);
+            try
+            {
+                Conecta.Open();
+            }
+            catch (SqlException Ex)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+                foreach (SqlError Error in Ex.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return ID;
+            }
+
+            SqlDataReader Lector = null;
+            string Query = "SELECT ID FROM EDITORIAL WHERE NOMBRE =" + "'" + Nombre + "'";
+            SqlCommand cmd = new SqlCommand(Query, Conecta);
+            try
+            {
+
+                Lector = cmd.ExecuteReader();
+
+            }
+            catch (SqlException Ex)
+            {
+                MessageBox.Show("NO SE PUDO CONECTAR A LA BASE DE DATOS");
+                foreach (SqlError Error in Ex.Errors)
+                    MessageBox.Show(Error.Message);
+                Conecta.Close();
+                return ID;
+            }
+
+            if (Lector.HasRows)
+            {
+                while (Lector.Read())
+                {
+                    ID = Convert.ToInt32(Lector.GetValue(0).ToString());
+                    return ID;
+                }
+            }
+            return ID;
         }
 
         public bool Valida()
@@ -83,6 +209,13 @@ namespace Biblioteca
             }
 
             return true;
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult D = MessageBox.Show("¿Desea salir?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (D == DialogResult.Yes)
+                this.Close();
         }
     }
 }

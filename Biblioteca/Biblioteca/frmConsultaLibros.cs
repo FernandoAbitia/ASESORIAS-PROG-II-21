@@ -12,27 +12,14 @@ namespace Biblioteca
 {
     public partial class frmConsultaLibros : Form
     {
-        ManejaLibros Libros;
-        public frmConsultaLibros(ManejaLibros Libros)
+        public frmConsultaLibros()
         {
             InitializeComponent();
-            this.Libros = Libros;
         }
 
         private void frmConsultaLibros_Load(object sender, EventArgs e)
         {
-            Libro L;
-            string ISBN;
 
-            KeyValuePair<string, Libro>[] Arreglo = Libros.ObtenLibros();
-
-            foreach (KeyValuePair<string,Libro> item in Arreglo)
-            {
-                L = item.Value;
-                ISBN = item.Key;
-
-                dgvLibros.Rows.Add(ISBN,L.pNombre,L.pAutor,L.pExistencia,L.pEditorial,L.pSala);
-            }
         }
     }
 }

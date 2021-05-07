@@ -12,14 +12,10 @@ namespace Biblioteca
 {
     public partial class frmPrincipal : Form
     {
-        private ManejaLibros Libros;
-        private ManejaPrestamos Prestamos;
 
         public frmPrincipal()
         {
             InitializeComponent();
-            Libros = new ManejaLibros();
-            Prestamos = new ManejaPrestamos();
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -29,25 +25,25 @@ namespace Biblioteca
 
         private void librosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRegistraLibro L = new frmRegistraLibro(Libros);
+            frmRegistraLibro L = new frmRegistraLibro();
             L.ShowDialog();
         }
 
         private void prestamosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRegistraPrestamo P = new frmRegistraPrestamo(Libros,Prestamos);
+            frmRegistraPrestamo P = new frmRegistraPrestamo();
             P.ShowDialog();
         }
 
         private void librosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmConsultaLibros L = new frmConsultaLibros(Libros);
+            frmConsultaLibros L = new frmConsultaLibros();
             L.ShowDialog();
         }
 
         private void prestamosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmConsultaPrestamos P = new frmConsultaPrestamos(Prestamos);
+            frmConsultaPrestamos P = new frmConsultaPrestamos();
             P.ShowDialog();
         }
     }

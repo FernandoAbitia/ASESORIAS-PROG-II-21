@@ -12,23 +12,14 @@ namespace Biblioteca
 {
     public partial class frmConsultaPrestamos : Form
     {
-        ManejaPrestamos Prestamos;
-        public frmConsultaPrestamos(ManejaPrestamos Prestamos)
+        public frmConsultaPrestamos()
         {
             InitializeComponent();
-            this.Prestamos = Prestamos;
         }
 
         private void frmConsultaPrestamos_Load(object sender, EventArgs e)
         {
-            Prestamo[] P = Prestamos.ObtenPrestamos();
-            Prestamo temp;
-            for (int i = 0; i < P.Length; i++)
-            {
-                temp = P[i];
-                dgvPrestamos.Rows.Add(temp.pClave,temp.pISBN,temp.pNombreUsuario,temp.pTipoUsuario);
 
-            }
         }
     }
 }
